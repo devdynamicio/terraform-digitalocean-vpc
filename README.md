@@ -12,9 +12,11 @@ This module requires Terraform version `0.13.0` or newer.
 
 ```hcl
 module "vpc" {
-  source   = "../../"
-  key_path = "~/.ssh/id_rsa.pub"
-  key_name = "devops"
+  source      = "../../"
+  name        = "vpc-example"
+  description = "VPC DO example"
+  ip_range    = "10.0.0.0/18"
+  region      = "frankfurt-1"
 }
 ```
 
@@ -40,22 +42,23 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [digitalocean_ssh_key.this](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/ssh_key) | resource |
+| [digitalocean_vpc.this](https://registry.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/vpc) | resource |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_key_name"></a> [key\_name](#input\_key\_name) | Name  (e.g. `admin` or `devops`). | `string` | `""` | no |
-| <a name="input_key_path"></a> [key\_path](#input\_key\_path) | Name  (e.g. `~/.ssh/id_rsa.pub` or `ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQD3F6tyPEFEzV0LX3X8BsXdMsQ`). | `string` | `""` | no |
-| <a name="input_ssh_key"></a> [ssh\_key](#input\_ssh\_key) | SSH key | `string` | `""` | no |
+| <a name="input_description"></a> [description](#input\_description) | A free-form text field up to a limit of 255 characters to describe the VPC. | `string` | `""` | no |
+| <a name="input_ip_range"></a> [ip\_range](#input\_ip\_range) | The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than /16 or smaller than /24. | `string` | `""` | no |
+| <a name="input_name"></a> [name](#input\_name) | A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only. | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | The DigitalOcean region slug for the VPC's location. | `string` | `"frankfurt-1"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_fingerprint"></a> [fingerprint](#output\_fingerprint) | The fingerprint of the SSH key. |
-| <a name="output_id"></a> [id](#output\_id) | The unique ID of the key. |
-| <a name="output_name"></a> [name](#output\_name) | The name of the SSH key. |
-| <a name="output_public_key"></a> [public\_key](#output\_public\_key) | The text of the public key. |
+| <a name="output_created_at"></a> [created\_at](#output\_created\_at) | The date and time of when the VPC was created. |
+| <a name="output_default"></a> [default](#output\_default) | A boolean indicating whether or not the VPC is the default one for the region. |
+| <a name="output_id"></a> [id](#output\_id) | The unique identifier for the VPC. |
+| <a name="output_urn"></a> [urn](#output\_urn) | The uniform resource name (URN) for the VPC. |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

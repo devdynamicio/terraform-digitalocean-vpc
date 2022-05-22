@@ -28,8 +28,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_kubernetes"></a> [kubernetes](#module\_kubernetes) | devdynamicio/kubernetes/digitalocean | 1.0.0 |
-| <a name="module_kubernetes_node_pool"></a> [kubernetes\_node\_pool](#module\_kubernetes\_node\_pool) | ../../ | n/a |
+| <a name="module_vpc"></a> [vpc](#module\_vpc) | ../../ | n/a |
 
 ## Resources
 
